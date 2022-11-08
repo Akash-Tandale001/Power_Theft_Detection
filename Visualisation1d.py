@@ -42,48 +42,34 @@ def visualisation1D():
 
     #statistics for consumer 
     #with fraud
-    fig2, axs2 = plt.subplots(2, 2)
+    fig2, axs2 = plt.subplots(2, 1)
     fig2.suptitle('Statistics for Consumers with Fraud', fontsize=18)
     plt.subplots_adjust(hspace=0.8)
 
-    data.loc[0].plot(ax=axs2[0, 0], color='firebrick', grid=True)
-    axs2[0, 0].set_title('Consumption of Consumer 0', fontsize=16)
-    axs2[0, 0].set_xlabel('Dates of Consumption')
-    axs2[0, 0].set_ylabel('Consumption')
+    data.loc[0].plot(ax=axs2[0], color='firebrick', grid=True)
+    axs2[0].set_title('Consumption of Consumer 0', fontsize=16)
+    axs2[0].set_xlabel('Dates of Consumption')
+    axs2[0].set_ylabel('Consumption')
 
-    data.loc[0].hist(color='firebrick', ax=axs2[0, 1], grid=True)
-    axs2[0, 1].set_title('Histogram', fontsize=16)
-    axs2[0, 1].set_xlabel('Values')
-    axs2[0, 1].set_ylabel('Frequency')
 
-    data.loc[0].plot.kde(color='firebrick', ax=axs2[1, 0], grid=True)
-    axs2[1, 0].set_title('Density Estimation', fontsize=16)
-    axs2[1, 0].set_xlabel('Values')
-    axs2[1, 0].set_ylabel('Density')
+    data.loc[0].plot.kde(color='firebrick', ax=axs2[1], grid=True)
+    axs2[1].set_title('Density Estimation', fontsize=16)
+    axs2[1].set_xlabel('Values')
+    axs2[1].set_ylabel('Density')
 
-    data.loc[0].describe().drop(['count']).plot(kind='bar', ax=axs2[1, 1], color='firebrick', grid=True)
-    axs2[1, 1].set_title('Statistics', fontsize=16)
-    axs2[1, 1].set_ylabel('Values')
 
     #without fraud
-    fig3, axs3 = plt.subplots(2, 2)
+    fig3, axs3 = plt.subplots(2,1)
     fig3.suptitle('Statistics for Consumers without Fraud', fontsize=18)
     plt.subplots_adjust(hspace=0.8)
-    data.loc[4].plot(ax=axs3[0, 0], color='teal', grid=True)
-    axs3[0, 0].set_title('Consumption of Consumer 40256', fontsize=16)
-    axs3[0, 0].set_xlabel('Dates of Consumption')
-    axs3[0, 0].set_ylabel('Consumption')
+    data.loc[4].plot(ax=axs3[0], color='teal', grid=True)
+    axs3[0].set_title('Consumption of Consumer 40256', fontsize=16)
+    axs3[0].set_xlabel('Dates of Consumption')
+    axs3[0].set_ylabel('Consumption')
 
-    data.loc[4].hist(color='teal', ax=axs3[0, 1])
-    axs3[0, 1].set_title('Histogram', fontsize=16)
-    axs3[0, 1].set_xlabel('Values')
-    axs3[0, 1].set_ylabel('Frequency')
 
-    data.loc[4].plot.kde(color='teal', ax=axs3[1, 0], grid=True)
-    axs3[1, 0].set_title('Density Estimation', fontsize=16)
-    axs3[1, 0].set_xlabel('Values')
-    axs3[1, 0].set_ylabel('Density')
+    data.loc[4].plot.kde(color='teal', ax=axs3[1], grid=True)
+    axs3[1].set_title('Density Estimation', fontsize=16)
+    axs3[1].set_xlabel('Values')
+    axs3[1].set_ylabel('Density')
 
-    data.loc[4].describe().drop(['count']).plot(kind='bar', ax=axs3[1, 1], color='teal', grid=True)
-    axs3[1, 1].set_title('Statistics', fontsize=16)
-    axs3[1, 1].set_ylabel('Values')
