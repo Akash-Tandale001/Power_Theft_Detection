@@ -9,7 +9,6 @@ def visualisation2D():
     rawData2 = pd.read_csv('./visualization.csv', skiprows=187) #removing first 189 rows
     rawData2.columns = cols
     data = pd.concat([rawData1, rawData2], ignore_index=True) #ignore_index=True to make row index number 
-                                                #continuous((0,1)+(0,1) ->form(0,1,0,1) to->(0,1,2,3))
 
     fig4, axs4 = plt.subplots(2, 1)
     fig4.suptitle('Four Week Consumption', fontsize=16)
@@ -55,5 +54,4 @@ def visualisation2D():
     axs5[1].set_yticklabels([''] + alpha)
     axs5[1].set_title('Customer with Fraud', fontsize=16)
     fig5.colorbar(cax)
-    # plt.close('all')
     plt.show()
