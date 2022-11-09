@@ -69,8 +69,6 @@ def results(y_test, prediction):
 
 def ANN(X_train, X_test, y_train, y_test):
     print('Artificial Neural Network:')
-    # for i in range(4,100,3):
-    #     print("Epoch:",i)
 
     # Model creation
     model = Sequential()
@@ -122,14 +120,6 @@ def CNN1D(X_train, X_test, y_train, y_test):
 
 def LR(X_train, X_test, y_train, y_test):
     print('Logistic Regression:')
-    '''
-    # Parameters selection 
-    param_grid = {'C': [0.1,1,10,100],'solver': ['newton-cg', 'lbfgs']}
-    grid = GridSearchCV(LogisticRegression(max_iter=1000,random_state=0), param_grid=param_grid, n_jobs=-1)
-    grid.fit(X_train, y_train)
-    df = pd.DataFrame(grid.cv_results_)
-    print(df[['param_C', 'param_solver', 'mean_test_score', 'rank_test_score']])
-    '''
     model = LogisticRegression(C=1000, max_iter=1000, n_jobs=-1, solver='newton-cg')
     model.fit(X_train, y_train)
     prediction = (model.predict(X_test) > 0.5).astype("int32")
@@ -146,14 +136,6 @@ def DT(X_train, X_test, y_train, y_test):
 
 def RF(X_train, X_test, y_train, y_test):
     print('Random Forest:')
-    '''
-    # Parameters selection 
-    param_grid = {'n_estimators':[10,100,1000]}
-    grid = GridSearchCV(RandomForestClassifier(random_state=0), param_grid=param_grid, n_jobs=-1)
-    grid.fit(X_train, y_train)
-    df = pd.DataFrame(grid.cv_results_)
-    print(df[['param_criterion', 'mean_test_score', 'rank_test_score']])
-    '''
 
     model = RandomForestClassifier(n_estimators=100, min_samples_leaf=1, max_features='auto',  # max_depth=10,
                                    random_state=0, n_jobs=-1)

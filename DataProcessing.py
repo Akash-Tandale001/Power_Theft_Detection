@@ -5,10 +5,6 @@ def processData():
     rawData = pd.read_csv('./data.csv')
 
     #data preprocessing 
-    #removing column 1 and 2(making InfoData)
-    #rawData1_=rawData.iloc[:100,:]
-    #rawData2_=rawData.iloc[-100:,:]
-    #rawData=pd.concat([rawData1_, rawData2_], ignore_index=True)
     infoData = pd.DataFrame()
     infoData['FLAG'] = rawData['FLAG']
     infoData['CONS_NO'] = rawData['CONS_NO']
@@ -54,8 +50,6 @@ def processData():
     scaled = scale.fit_transform(data.values.T).T
     mData = pd.DataFrame(data=scaled, columns=data.columns)
     preprData = pd.concat([infoData, mData], axis=1, sort=False)  # Back to initial format
-    #print("Noramalised data")
-    #print(preprData)
 
     # save preprocessed data after scaling
     preprData.to_csv(r'preprocessedR.csv', index=False, header=True)
