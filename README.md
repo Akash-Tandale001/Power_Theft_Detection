@@ -7,4 +7,5 @@
 - <a href="https://github.com/PreranaS0387">PreranaS0387</a>
 <h3>For More Information Check out the literature survey : <a href="https://docs.google.com/document/d/1CjFZ1FMxMsm5nihxSXg3iPVPMkSGRv1Hyiw0bR5mvxE/edit#">Literature Survey</a></h3>      
 <h3>You Can Download Dataset used for this project from <a href="https://drive.google.com/file/d/1V9KGFqvVy2Yx6ZY7q2vn1ZtN_9HmlJuK/view?usp=sharing">here</h3></h4>
-![WhatsApp Image 2022-11-10 at 20 55 17](https://user-images.githubusercontent.com/79105608/201135845-6c626b05-956b-4845-9fbe-e5ad9aaee0aa.jpg)
+
+![poster ](https://user-images.githubusercontent.com/79105608/201136113-ee7861a5-188d-4a98-b154-35ab6e04352c.jpg)
