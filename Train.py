@@ -13,11 +13,6 @@ from sklearn.svm import SVC
 import numpy as np
 from sklearn.model_selection import GridSearchCV
 from imblearn.over_sampling import SMOTE
-import DataProcessing
-
-
-
-
 
 tf.random.set_seed(1234)
 epochs_number = 1  # number of epochs for the neural networks
@@ -25,11 +20,8 @@ test_set_size = 0.1  # percentage of the test size comparing to the whole datase
 oversampling_flag = 0  # set to 1 to over-sample the minority class
 oversampling_percentage = 0.2  # percentage of the minority class after the oversampling comparing to majority class
 
-# Definition of functions
 def read_data():
     rawData = pd.read_csv('preprocessedR.csv')
-
-    # Setting the target and dropping the unnecessary columns
     y = rawData[['FLAG']]
     X = rawData.drop(['FLAG', 'CONS_NO'], axis=1)
 
@@ -66,30 +58,6 @@ def results(y_test, prediction):
     print("AUC:", 100 * roc_auc_score(y_test, prediction))
     print(confusion_matrix(y_test, prediction), "\n")
 
-
-def ANN(X_train, X_test, y_train, y_test):
-    print('Artificial Neural Network:')
-
-    # Model creation
-    model = Sequential()
-    model.add(Dense(1000, input_dim=1034, activation='relu'))
-    model.add(Dense(100, activation='relu'))
-    model.add(Dense(100, activation='relu'))
-    model.add(Dense(100, activation='relu'))
-    model.add(Dense(10, activation='relu'))
-    model.add(Dense(1, activation='sigmoid'))
-
-    model.compile(loss=keras.losses.binary_crossentropy,
-                  optimizer='adam',
-                  metrics=['accuracy'])
-
-    # model.fit(X_train, y_train, validation_split=0, epochs=i, shuffle=True, verbose=0)
-    model.fit(X_train, y_train, validation_split=0, epochs=epochs_number, shuffle=True, verbose=1)
-    prediction = (model.predict(X_test) > 0.5).astype("int32")
-    model.summary()
-    results(y_test, prediction)
-
-
 def CNN1D(X_train, X_test, y_train, y_test):
     print('1D - Convolutional Neural Network:')
 
@@ -105,62 +73,15 @@ def CNN1D(X_train, X_test, y_train, y_test):
     model.add(Dense(100, activation='relu'))
     model.add(Dense(64, activation='relu'))
     model.add(Dense(1, activation='sigmoid'))
-
-    model.compile(loss=keras.losses.binary_crossentropy,
-                  optimizer='adam',
-                  metrics=['accuracy'])
-
+    model.compile(loss=keras.losses.binary_crossentropy,optimizer='adam',metrics=['accuracy'])
     model.fit(X_train, y_train, epochs=epochs_number, validation_split=0, shuffle=False, verbose=1)
     prediction = (model.predict(X_test) > 0.5).astype("int32")
     model.summary()
     results(y_test, prediction)
 
-
-
-
-def LR(X_train, X_test, y_train, y_test):
-    print('Logistic Regression:')
-    model = LogisticRegression(C=1000, max_iter=1000, n_jobs=-1, solver='newton-cg')
-    model.fit(X_train, y_train)
-    prediction = (model.predict(X_test) > 0.5).astype("int32")
-    results(y_test, prediction)
-
-
-def DT(X_train, X_test, y_train, y_test):
-    print('Decision Tree:')
-    model = DecisionTreeClassifier(random_state=0)
-    model.fit(X_train, y_train)
-    prediction = (model.predict(X_test) > 0.5).astype("int32")
-    results(y_test, prediction)
-
-
-def RF(X_train, X_test, y_train, y_test):
-    print('Random Forest:')
-
-    model = RandomForestClassifier(n_estimators=100, min_samples_leaf=1, max_features='auto',  # max_depth=10,
-                                   random_state=0, n_jobs=-1)
-    model.fit(X_train, y_train)
-    prediction = (model.predict(X_test) > 0.5).astype("int32")
-    results(y_test, prediction)
-
-
-def SVM(X_train, X_test, y_train, y_test):
-    model = SVC(random_state=0)
-    model.fit(X_train, y_train)
-    prediction = (model.predict(X_test) > 0.5).astype("int32")
-    results(y_test, prediction)
-
-
 # ----Main----
 def processTraining():
     X_train, X_test, y_train, y_test = read_data()
-
-    # Uncomment any model to test
-    #ANN(X_train, X_test, y_train, y_test)
     CNN1D(X_train, X_test, y_train, y_test)
-    #RF(X_train, X_test, y_train, y_test)
-    #LR(X_train, X_test, y_train, y_test)
-    #DT(X_train, X_test, y_train, y_test)
-    #SVM(X_train, X_test, y_train, y_test)
 
 
