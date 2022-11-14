@@ -10,6 +10,6 @@
 <h2 style="text-align:center">Group Poster created using <a href="https://www.canva.com/">@canva</a></h2>
 
 
-![Power Theft AI Poster](https://user-images.githubusercontent.com/89975347/201720204-95e5fb8b-b5f3-4f95-a487-864cd7e23f3d.png)
 
  
+![Power Theft AI Poster](https://user-images.githubusercontent.com/89975347/201721400-e7015cba-524a-48ea-9516-cb9e5a681d27.png)
